@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         //clicked on about in menu
         if (id == R.id.action_about) {
             System.out.println("clicked about");
+
+            //LUL
             return true;
         }
 
