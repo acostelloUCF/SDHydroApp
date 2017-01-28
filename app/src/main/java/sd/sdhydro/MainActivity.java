@@ -1,5 +1,8 @@
 package sd.sdhydro;
 
+import android.content.Intent;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +11,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+
+    private String userName;
+    private String password;
+    private TextView userNameTextField;
+    private TextView passwordTextField;
+    private Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +31,28 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //add icon to toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.let);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        //get reference to textfields and button
+        userNameTextField = (TextView) findViewById(R.id.userNameTextField);
+        passwordTextField = (TextView) findViewById(R.id.passwordTextField);
+        loginButton = (Button) findViewById(R.id.loginButton);
+
+
+        //set click listener and onClick method
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userName = userNameTextField.getText().toString();
+                password = passwordTextField.getText().toString();
+
+                //System.out.println(userName+" "+password);
+
+            }
+        });
 
     }
 
@@ -41,13 +73,18 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         //clicked on settings in menu
         if (id == R.id.action_settings) {
+            System.out.println("clicked settings");
+
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         }
         //clicked on about in menu
         if (id == R.id.action_about) {
             System.out.println("clicked about");
 
-            //LUL
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
             return true;
         }
 
