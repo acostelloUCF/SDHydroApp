@@ -1,11 +1,7 @@
 package sd.sdhydro;
 
 import android.content.Intent;
-import android.graphics.LightingColorFilter;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView userNameTextField;
     private TextView passwordTextField;
     private Button loginButton;
-
+    private Button newUserButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,25 +31,47 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setLogo(R.mipmap.let);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        //get reference to textfields and button
+        //get reference to textfields and buttons
         userNameTextField = (TextView) findViewById(R.id.userNameTextField);
         passwordTextField = (TextView) findViewById(R.id.passwordTextField);
         loginButton = (Button) findViewById(R.id.loginButton);
+        newUserButton = (Button) findViewById(R.id.newUserButton);
 
-
-        //set click listener and onClick method
+        //set click listener and onClick methods
         loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
             public void onClick(View v) {
+                //onLoginClick();
+
                 userName = userNameTextField.getText().toString();
                 password = passwordTextField.getText().toString();
 
-                //System.out.println(userName+" "+password);
-
+                System.out.println(userName+" "+password);
             }
         });
 
+        newUserButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+                onNewUserClick();
+            }
+        });
     }
+
+    public void onLoginClick(){
+        userName = userNameTextField.getText().toString();
+        password = passwordTextField.getText().toString();
+
+        System.out.println(userName+" "+password);
+
+    }
+
+    public void onNewUserClick(){
+        Intent intent = new Intent(this, NewUserActivity.class);
+        startActivity(intent);
+
+    }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,4 +107,8 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
+
+

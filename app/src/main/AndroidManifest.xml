@@ -20,15 +20,13 @@
         </activity>
         <activity
             android:name=".AboutActivity"
-            android:label="About">
-
-        </activity>
+            android:label="About"></activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings"
-            >
-
-        </activity>
+            android:label="Settings"></activity>
+        <activity
+            android:name=".NewUserActivity"
+            android:label="New User"></activity>
     </application>
 
 </manifest>
