@@ -27,6 +27,11 @@ public class NewUserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
 
+        //add icon to toolbar
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.let);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
 
         //get reference to UI objects
         userNameTextField = (TextView) findViewById(R.id.userNameTextField);

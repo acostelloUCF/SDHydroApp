@@ -42,8 +42,9 @@
         android:theme="@style/Green.Button"
         android:text="Login"
         android:id="@+id/loginButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/passwordTextField"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
 
     <Button
         style="@style/Widget.AppCompat.Button.Colored"
@@ -52,9 +53,8 @@
         android:theme="@style/Green.Button"
         android:text="New User Registration"
         android:id="@+id/newUserButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="39dp"/>
+        android:layout_below="@+id/textView8"
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -62,7 +62,8 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Haven&apos;t registered yet?"
         android:id="@+id/textView8"
-        android:layout_above="@+id/newUserButton"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/loginButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp" />
 
 </RelativeLayout>

@@ -1,7 +1,9 @@
 package sd.sdhydro;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -37,21 +39,15 @@ public class MainActivity extends AppCompatActivity {
         loginButton = (Button) findViewById(R.id.loginButton);
         newUserButton = (Button) findViewById(R.id.newUserButton);
 
-        //set click listener and onClick methods
+        //set click listeners and onClick methods
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //onLoginClick();
-
-                userName = userNameTextField.getText().toString();
-                password = passwordTextField.getText().toString();
-
-                System.out.println(userName+" "+password);
+                onLoginClick();
             }
         });
 
         newUserButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
                 onNewUserClick();
             }
         });
@@ -62,6 +58,25 @@ public class MainActivity extends AppCompatActivity {
         password = passwordTextField.getText().toString();
 
         System.out.println(userName+" "+password);
+
+        if(userName.equals("123")){
+            //if valid login credentials
+            
+
+        }else{
+            //if not valid login credentials
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Oops...");
+            alertDialog.setMessage("Invalid login credentials. Please try again.");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
 
     }
 
