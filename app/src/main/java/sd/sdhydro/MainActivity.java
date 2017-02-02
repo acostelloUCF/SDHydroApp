@@ -2,6 +2,7 @@ package sd.sdhydro;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -61,7 +62,14 @@ public class MainActivity extends AppCompatActivity {
 
         if(userName.equals("123")){
             //if valid login credentials
-            
+
+            //store username for access from any activity
+            SharedPreferences myprefs= this.getSharedPreferences("user", MODE_PRIVATE);
+            myprefs.edit().putString("userName", userName).commit();
+
+            //go to user home
+            Intent intent = new Intent(this, UserHomeActivity.class);
+            startActivity(intent);
 
         }else{
             //if not valid login credentials
@@ -103,14 +111,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        //clicked on settings in menu
-        if (id == R.id.action_settings) {
-            System.out.println("clicked settings");
 
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        }
         //clicked on about in menu
         if (id == R.id.action_about) {
             System.out.println("clicked about");
@@ -123,7 +124,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed() {
+    }
 }
 
 
