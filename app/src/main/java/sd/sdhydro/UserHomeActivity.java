@@ -88,6 +88,14 @@ public class UserHomeActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
 
+        if (id == R.id.action_manageEquipmentIDs) {
+            System.out.println("clicked logout");
+            Intent intent = new Intent(this, ManageEquipmentIDsActivity.class);
+            startActivity(intent);
+
+            return true;
+        }
+
         if (id == R.id.action_settings) {
             System.out.println("clicked settings");
             Intent intent = new Intent(this, SettingsActivity.class);

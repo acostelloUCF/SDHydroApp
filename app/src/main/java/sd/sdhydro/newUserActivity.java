@@ -37,16 +37,35 @@ public class NewUserActivity extends AppCompatActivity {
         userNameTextField = (TextView) findViewById(R.id.userNameTextField);
         passwordTextField = (TextView) findViewById(R.id.passwordTextField);
         confirmPasswordTextField = (TextView) findViewById(R.id.confirmPasswordTextField);
-        equipmentIDTextField = (TextView) findViewById(R.id.equipmentIDTextField);
         registerButton = (Button) findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
+
+
                 userName = userNameTextField.getText().toString();
                 password = passwordTextField.getText().toString();
                 confirmPassword = confirmPasswordTextField.getText().toString();
-                equipmentID = equipmentIDTextField.getText().toString();
+
+                //create alert for empty field
+                AlertDialog alertDialogEmpty = new AlertDialog.Builder(NewUserActivity.this).create();
+                alertDialogEmpty.setTitle("Oops...");
+                alertDialogEmpty.setMessage("One or more of the fields are empty. Please fill them out.");
+                alertDialogEmpty.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+
+
+                if(userName.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()){
+                    alertDialogEmpty.show();
+                }
+
 
                 //create alert for mismatched passwords
                 AlertDialog alertDialog = new AlertDialog.Builder(NewUserActivity.this).create();
