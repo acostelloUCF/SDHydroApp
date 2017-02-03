@@ -36,7 +36,8 @@
         android:text="UCF CECS Senior Design Group 18"
         android:id="@+id/textView2"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp" />
 
     <TextView
         android:layout_width="wrap_content"

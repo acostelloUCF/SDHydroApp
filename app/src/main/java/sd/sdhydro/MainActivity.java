@@ -1,7 +1,10 @@
 package sd.sdhydro;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -37,21 +40,15 @@ public class MainActivity extends AppCompatActivity {
         loginButton = (Button) findViewById(R.id.loginButton);
         newUserButton = (Button) findViewById(R.id.newUserButton);
 
-        //set click listener and onClick methods
+        //set click listeners and onClick methods
         loginButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //onLoginClick();
-
-                userName = userNameTextField.getText().toString();
-                password = passwordTextField.getText().toString();
-
-                System.out.println(userName+" "+password);
+                onLoginClick();
             }
         });
 
         newUserButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                // Perform action on click
                 onNewUserClick();
             }
         });
@@ -62,6 +59,32 @@ public class MainActivity extends AppCompatActivity {
         password = passwordTextField.getText().toString();
 
         System.out.println(userName+" "+password);
+
+        if(userName.equals("123")){
+            //if valid login credentials
+
+            //store username for access from any activity
+            SharedPreferences myprefs= this.getSharedPreferences("user", MODE_PRIVATE);
+            myprefs.edit().putString("userName", userName).commit();
+
+            //go to user home
+            Intent intent = new Intent(this, UserHomeActivity.class);
+            startActivity(intent);
+
+        }else{
+            //if not valid login credentials
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Oops...");
+            alertDialog.setMessage("Invalid login credentials. Please try again.");
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
 
     }
 
@@ -88,14 +111,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        //clicked on settings in menu
-        if (id == R.id.action_settings) {
-            System.out.println("clicked settings");
 
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        }
         //clicked on about in menu
         if (id == R.id.action_about) {
             System.out.println("clicked about");
@@ -108,7 +124,9 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    @Override
+    public void onBackPressed() {
+    }
 }
 
 

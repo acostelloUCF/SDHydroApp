@@ -47,18 +47,6 @@
         android:layout_alignRight="@+id/textView10"
         android:layout_alignEnd="@+id/textView10" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Equipment ID:"
-        android:id="@+id/textView12"
-        android:textSize="16dp"
-        android:layout_below="@+id/textView11"
-        android:layout_alignRight="@+id/textView10"
-        android:layout_alignEnd="@+id/textView10"
-        android:layout_marginTop="40dp" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,19 +54,19 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:theme="@style/Green.Button"
         android:id="@+id/registerButton"
-        android:layout_below="@+id/textView12"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="74dp" />
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/confirmPasswordTextField"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="150dp"
         android:layout_height="40dp"
         android:id="@+id/userNameTextField"
+        android:singleLine="true"
         android:layout_alignBottom="@+id/textView10"
-        android:layout_toRightOf="@+id/textView12"
-        android:layout_toEndOf="@+id/textView12"
-        android:layout_marginBottom="-8dp"
-        android:singleLine="true"/>
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10"
+        android:layout_marginBottom="-8dp" />
 
     <EditText
         android:layout_width="150dp"
@@ -87,8 +75,8 @@
         android:ems="10"
         android:id="@+id/passwordTextField"
         android:layout_alignBottom="@+id/textView9"
-        android:layout_alignLeft="@+id/userNameTextField"
-        android:layout_alignStart="@+id/userNameTextField"
+        android:layout_toRightOf="@+id/textView10"
+        android:layout_toEndOf="@+id/textView10"
         android:layout_marginBottom="-8dp" />
 
     <EditText
@@ -97,19 +85,9 @@
         android:inputType="textPassword"
         android:ems="10"
         android:id="@+id/confirmPasswordTextField"
-        android:layout_above="@+id/textView12"
-        android:layout_alignLeft="@+id/passwordTextField"
-        android:layout_alignStart="@+id/passwordTextField"
+        android:layout_alignBottom="@+id/textView11"
+        android:layout_toRightOf="@+id/textView9"
+        android:layout_toEndOf="@+id/textView9"
         android:layout_marginBottom="-8dp" />
-
-    <EditText
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:id="@+id/equipmentIDTextField"
-        android:layout_above="@+id/registerButton"
-        android:layout_toRightOf="@+id/textView12"
-        android:layout_toEndOf="@+id/textView12"
-        android:layout_marginBottom="-8dp"
-        android:singleLine="true"/>
 
 </RelativeLayout>
