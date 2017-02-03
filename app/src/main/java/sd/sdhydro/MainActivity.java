@@ -60,7 +60,27 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println(userName+" "+password);
 
-        if(userName.equals("123")){
+
+        //create alert for empty field
+        AlertDialog alertDialogEmpty = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialogEmpty.setTitle("Oops...");
+        alertDialogEmpty.setMessage("One or more of the fields are empty. Please fill them out.");
+        alertDialogEmpty.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+
+        //check empty fields
+        if(userName.isEmpty() || password.isEmpty()){
+            alertDialogEmpty.show();
+        }
+
+        //check vlaid dlogin
+        else if(userName.equals("123") && password.equals("123")){
             //if valid login credentials
 
             //store username for access from any activity
@@ -71,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, UserHomeActivity.class);
             startActivity(intent);
 
+            //otherwise invalid login
         }else{
             //if not valid login credentials
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();

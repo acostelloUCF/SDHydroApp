@@ -39,7 +39,8 @@ public class UserHomeActivity extends AppCompatActivity {
 
 
         //create request here
-        String url ="http://192.168.56.1:8081/website/getData.php";
+        //String url ="http://192.168.56.1:8081/website/getData.php";
+        String url ="http://google.com";
         // Formulate the request and handle the response.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
