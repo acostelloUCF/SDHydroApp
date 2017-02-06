@@ -13,6 +13,16 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -52,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
                 onNewUserClick();
             }
         });
+
+
+
+
+
     }
 
     public void onLoginClick(){
@@ -60,32 +75,51 @@ public class MainActivity extends AppCompatActivity {
 
         System.out.println(userName+" "+password);
 
-        if(userName.equals("123")){
-            //if valid login credentials
+        //final MainActivity thisMain = this;
 
-            //store username for access from any activity
-            SharedPreferences myprefs= this.getSharedPreferences("user", MODE_PRIVATE);
-            myprefs.edit().putString("userName", userName).commit();
 
-            //go to user home
-            Intent intent = new Intent(this, UserHomeActivity.class);
-            startActivity(intent);
-
-        }else{
-            //if not valid login credentials
-            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-            alertDialog.setTitle("Oops...");
-            alertDialog.setMessage("Invalid login credentials. Please try again.");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
+            //create request here
+            String url ="http://192.168.56.1:8081/website/appLogin.php";
+            // Formulate the request and handle the response.
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+                    new Response.Listener<String>() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
+                        //check if login succeeded or not
+                        public void onResponse(String response){
+                            evaluateResponse(response);
                         }
-                    });
-            alertDialog.show();
-        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            // Handle error
+                        }
+                    }
 
+            ){
+
+                //add post parameters
+                @Override
+                protected Map<String,String> getParams(){
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("login-id",userName);
+                    params.put("login-password", password);
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String,String> params = new HashMap<String, String>();
+                    params.put("Content-Type","application/x-www-form-urlencoded");
+                    return params;
+                }
+            };
+            //Use singleton here
+            // Get a RequestQueue
+            RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).
+                    getRequestQueue();
+            // Add a request (in this example, called stringRequest) to your RequestQueue.
+            MySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
     public void onNewUserClick(){
@@ -95,6 +129,48 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void evaluateResponse(String response){
+
+        String parsedResponse= response.substring(0,5);
+        if(parsedResponse.equals("Valid")){
+
+
+            //store username, pass and isLoggedIn
+            SharedPreferences myprefs= this.getSharedPreferences("userName", MODE_PRIVATE);
+            myprefs.edit().putString("userName", userName).commit();
+
+            myprefs= this.getSharedPreferences("password", MODE_PRIVATE);
+            myprefs.edit().putString("password", password).commit();
+
+            myprefs= this.getSharedPreferences("isLoggedIn", MODE_PRIVATE);
+            myprefs.edit().putBoolean("isLoggedIn", true).commit();
+
+            //go to user home
+            Intent intent = new Intent(this, UserHomeActivity.class);
+            startActivity(intent);
+
+
+        }
+        else{
+            parsedResponse= response.substring(0,31);
+            //if not valid login credentials
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Oops...");
+            alertDialog.setMessage(parsedResponse);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+
+
+        }
+
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
