@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserHomeActivity extends AppCompatActivity implements Serializable {
+public class UserHomeActivity extends AppCompatActivity{
     private String userName;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
     ListView listView;
@@ -167,7 +167,6 @@ public class UserHomeActivity extends AppCompatActivity implements Serializable 
         if (id == R.id.action_manageEquipmentIDs) {
             System.out.println("clicked equipment ID management");
             Intent intent = new Intent(this, ManageEquipmentIDsActivity.class);
-            intent.putExtra("jArray", jArrayList);
             startActivity(intent);
 
             return true;

@@ -13,7 +13,7 @@
         android:layout_width="200dp"
         android:layout_height="40dp"
 
-        android:id="@+id/addEqduipmentIDEditText"
+        android:id="@+id/addEquipmentIDEditText"
         android:hint="Enter Equipment ID"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -26,7 +26,29 @@
         android:theme="@style/Green.Button"
         android:text="Add"
         android:id="@+id/addEquipmentIDButton"
-        android:layout_alignBottom="@+id/addEqduipmentIDEditText"
+        android:layout_alignBottom="@+id/addEquipmentIDEditText"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/Red.Button"
+        android:text="Delete"
+        android:id="@+id/deleteButton"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/addEquipmentIDEditText" />
+
+    <Button
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/Green.Button"
+        android:text="Info"
+        android:id="@+id/infoButton"
+        android:layout_alignTop="@+id/deleteButton"
+        android:layout_toLeftOf="@+id/deleteButton"
+        android:layout_toStartOf="@+id/deleteButton" />
 </RelativeLayout>
