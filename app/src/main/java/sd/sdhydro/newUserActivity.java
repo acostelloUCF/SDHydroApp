@@ -109,7 +109,7 @@ public class NewUserActivity extends AppCompatActivity {
     public void makeRequest(){
 
         //create request here
-        String url ="http://192.168.56.1:8081/website/appNewUser.php";
+        String url = getString(R.string.dbURL);
         // Formulate the request and handle the response.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -133,6 +133,7 @@ public class NewUserActivity extends AppCompatActivity {
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("newUser-name",userName);
                 params.put("newUser-password",password);
+                params.put("opCode", "2");
                 return params;
             }
 

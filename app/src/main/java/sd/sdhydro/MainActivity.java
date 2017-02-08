@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             //create request here
-            String url ="http://192.168.56.1:8081/website/appLogin.php";
+            String url = getString(R.string.dbURL);
             // Formulate the request and handle the response.
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                     new Response.Listener<String>() {
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     Map<String,String> params = new HashMap<String, String>();
                     params.put("login-id",userName);
                     params.put("login-password", password);
+                    params.put("opCode", "1");
                     return params;
                 }
 

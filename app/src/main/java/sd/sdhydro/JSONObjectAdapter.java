@@ -47,7 +47,7 @@ public class JSONObjectAdapter extends ArrayAdapter<JSONObject>{
         {
             jView = (LinearLayout) convertView;
         }
-        //Get the text boxes from the listitem.xml file
+        //Get the text boxes
         TextView eIDText =(TextView)jView.findViewById(R.id.list_item_equipmentID);
         TextView phText =(TextView)jView.findViewById(R.id.list_item_ph);
         TextView tdsText =(TextView)jView.findViewById(R.id.list_item_tds);

@@ -5,9 +5,8 @@
     <string name="action_logout">Logout</string>
     <string name="action_manageEquipmentIDs">Manage Equipment IDs</string>
     <string name="database_name">hydro</string>
-    <string name="websiteURL_login"></string>
-    <string name="websiteURL_newUser"></string>
-    <string name="websiteURL_report"></string>
+    <string name="dbURL">http://192.168.56.1:8081/website/app.php</string>
+
 
     <string name="title_activity_user_home">Home</string>
 

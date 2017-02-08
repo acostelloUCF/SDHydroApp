@@ -35,13 +35,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UserHomeActivity extends AppCompatActivity {
+public class UserHomeActivity extends AppCompatActivity implements Serializable {
     private String userName;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
     ListView listView;
@@ -68,7 +69,7 @@ public class UserHomeActivity extends AppCompatActivity {
 
 
         //create request here
-        String url ="http://192.168.56.1:8081/website/appUserHome.php";
+        String url = getString(R.string.dbURL);
         // Formulate the request and handle the response.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -82,9 +83,12 @@ public class UserHomeActivity extends AppCompatActivity {
                                 jArrayList.add(jArray.getJSONObject(i));
                             }
 
+
+
                         }catch (JSONException e){
                                 e.printStackTrace();
                         }
+
 
 
                     }
@@ -103,6 +107,7 @@ public class UserHomeActivity extends AppCompatActivity {
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("userName",userName);
+                params.put("opCode", "3");
                 return params;
             }
 
@@ -142,50 +147,6 @@ public class UserHomeActivity extends AppCompatActivity {
     }
 
 
-//    public void evaluateResponse(String response){
-//
-//
-//        //parse JSON response
-//        try {
-//            //initalize JSON array and make arrays for parsing
-//            JSONArray jArray = new JSONArray(response);
-////            String[] equipID = new String[jArray.length()];
-////            String[] nick = new String[jArray.length()];
-////            String[] time = new String[jArray.length()];
-////            String[] pH = new String[jArray.length()];
-////            String[] TDS = new String[jArray.length()];
-////            String[] Lux = new String[jArray.length()];
-//            for(int i=0;i<jArray.length();i++){
-//                jArrayList.add(jArray.getJSONObject(i));
-//
-//                //add columns to individual arrays
-////                equipID[i] = temp.get("equipmentID").toString();
-////                nick[i] = temp.get("nickname").toString();
-////                time[i]= temp.get("currentTimestamp").toString();
-////                pH[i] = temp.get("currentPH").toString();
-////                TDS[i] = temp.get("currentTDS").toString();
-////                Lux[i] = temp.get("currentLUX").toString();
-//            }
-//
-//
-////            System.out.println(Arrays.toString(equipID));
-////            System.out.println(Arrays.toString(nick));
-////            System.out.println(Arrays.toString(time));
-////            System.out.println(Arrays.toString(pH));
-////            System.out.println(Arrays.toString(TDS));
-////            System.out.println(Arrays.toString(Lux));
-//
-//
-//
-//
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-
-
-
-        //dumpText.setText(jObj.getString("userName"));
-    // }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -204,8 +165,9 @@ public class UserHomeActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
 
         if (id == R.id.action_manageEquipmentIDs) {
-            System.out.println("clicked logout");
+            System.out.println("clicked equipment ID management");
             Intent intent = new Intent(this, ManageEquipmentIDsActivity.class);
+            intent.putExtra("jArray", jArrayList);
             startActivity(intent);
 
             return true;
