@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:text="Info"
+        android:id="@+id/list_item_btn"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:theme="@style/Green.Button"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="EquipmentID: 0022"
+        android:id="@+id/list_item_equipmentID"
+        android:layout_below="@+id/list_item_nick"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="18dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="PH: 7.22"
+        android:id="@+id/list_item_ph"
+        android:layout_below="@+id/list_item_equipmentID"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="LUX: 802888"
+        android:id="@+id/list_item_lux"
+        android:layout_below="@+id/list_item_equipmentID"
+        android:layout_toRightOf="@+id/list_item_ph"
+        android:layout_toEndOf="@+id/list_item_ph"
+        android:layout_marginLeft="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Time: 2017-01-31 04:34:32"
+        android:id="@+id/list_item_time"
+        android:layout_below="@+id/list_item_lux"
+        android:layout_alignLeft="@+id/list_item_lux"
+        android:layout_alignStart="@+id/list_item_lux" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="TDS:330"
+        android:id="@+id/list_item_tds"
+        android:layout_below="@+id/list_item_ph"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Garage Setup"
+        android:id="@+id/list_item_nick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="28dp" />
+</RelativeLayout>
