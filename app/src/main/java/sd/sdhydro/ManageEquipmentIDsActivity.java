@@ -57,7 +57,23 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
         addEIDButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                addEquipmentID();
+                if(!eID.getText().toString().isEmpty())
+                    addEquipmentID();
+                else{
+                    AlertDialog alertDialog = new AlertDialog.Builder(ManageEquipmentIDsActivity.this).create();
+                    alertDialog.setTitle("Oops...");
+                    alertDialog.setMessage("You must enter an equipment ID.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    alertDialog.show();
+
+
+                }
             }
         });
 

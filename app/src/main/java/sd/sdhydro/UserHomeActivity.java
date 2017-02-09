@@ -75,7 +75,6 @@ public class UserHomeActivity extends AppCompatActivity{
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                       // evaluateResponse(response);
                         try {
                             JSONArray jArray = new JSONArray(response);
 
@@ -139,7 +138,7 @@ public class UserHomeActivity extends AppCompatActivity{
         //create listview, pass it the listlayout and list of JSON objects
 
         listView = (ListView)findViewById(R.id.listview);
-        jArrayAdapter = new JSONObjectAdapter(UserHomeActivity.this, R.layout.list_item,jArrayList);
+        jArrayAdapter = new JSONObjectAdapter(UserHomeActivity.this, R.layout.list_item,jArrayList, this);
         listView.setAdapter(jArrayAdapter);
 
 

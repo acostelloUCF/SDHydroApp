@@ -35,8 +35,11 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ManageEquipmentIDsActivity"
-            android:label="Equipment ID Management">
-        </activity>
+            android:label="Equipment ID Management"></activity>
+        <activity
+            android:name=".EquipmentHistoryActivity"
+            android:label="Equipment History"
+            ></activity>
     </application>
 
 </manifest>
