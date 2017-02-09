@@ -66,7 +66,7 @@ public class JSONObjectAdapter extends ArrayAdapter<JSONObject>{
             if(jObj.get("nickname").toString().substring(0,3).equals("null"))
                 nickText.setText(jObj.get("nickname").toString());
             else
-                nickText.setText("No nickname set.");
+                nickText.setText("");
         } catch (JSONException e) {
             e.printStackTrace();
         }
