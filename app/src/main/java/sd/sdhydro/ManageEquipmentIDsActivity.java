@@ -31,6 +31,7 @@ import java.util.Map;
 public class ManageEquipmentIDsActivity extends AppCompatActivity{
     private TextView eID;
     private Button addEIDButton;
+    private Button deleteButton;
     private String equipmentID;
     private String userName;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
@@ -41,6 +42,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
         eID = (TextView) findViewById(R.id.addEquipmentIDEditText);
         addEIDButton = (Button) findViewById(R.id.addEquipmentIDButton);
+        deleteButton = (Button) findViewById(R.id.deleteButton);
         //add icon to toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.let);
@@ -52,6 +54,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
         //do another userHome query to get jArrayList
         getJArrayList();
+        System.out.println(jArrayList.size());
 
 
 
@@ -77,17 +80,73 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
             }
         });
 
-//        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-//        // Create an ArrayAdapter using the string array and a default spinner layout
-//        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-//                R.array.planets_array, android.R.layout.simple_spinner_item);
-//        // Specify the layout to use when the list of choices appears
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        // Apply the adapter to the spinner
-//        spinner.setAdapter(adapter);
+        deleteButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(ManageEquipmentIDsActivity.this).create();
+                alertDialog.setTitle("Warning!");
+                alertDialog.setMessage("You are about to remove an equipment ID from your profile. Are you sure you want to do this?");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes, delete it.",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                deleteEquipmentID();
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                alertDialog.show();
+
+            }
+        });
+
+
+
 
 
     }
+
+    private void initSpinner() {
+        String[] array = new String[jArrayList.size()];
+        int i=0;
+
+        for(JSONObject j : jArrayList){
+            String temp="LUL";
+            try {
+                temp = j.getString("nickname").toString();
+                if(temp.equals("null")){
+                    temp = j.getString("equipmentID").toString();
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            array[i]=temp;
+            i++;
+        }
+
+        for(String s: array){
+            System.out.println(s);
+        }
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, R.layout.spinner_item, array);
+        //adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+        // Specify the layout to use when the list of choices appears
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+    }
+
 
     public void getJArrayList(){
         //create request here
@@ -109,6 +168,8 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
                         }catch (JSONException e){
                             e.printStackTrace();
                         }
+
+                        initSpinner();
                     }
                 },
                 new Response.ErrorListener() {
@@ -244,4 +305,10 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         Intent intent = new Intent(this, UserHomeActivity.class);
         startActivity(intent);
     }
+
+        //make deletion query here
+    private void deleteEquipmentID(){
+        System.out.println("dellllll");
+    }
+
 }
