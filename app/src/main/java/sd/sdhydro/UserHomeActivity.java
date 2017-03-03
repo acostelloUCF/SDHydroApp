@@ -88,8 +88,6 @@ public class UserHomeActivity extends AppCompatActivity{
                                 e.printStackTrace();
                         }
 
-
-
                     }
                 },
                 new Response.ErrorListener() {
