@@ -89,9 +89,6 @@ public class UserHomeActivity extends AppCompatActivity{
                         }
 
 
-
-
-
                     }
                 },
                 new Response.ErrorListener() {

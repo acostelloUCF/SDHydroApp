@@ -73,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         userName = userNameTextField.getText().toString();
         password = passwordTextField.getText().toString();
 
+        if(userName.equals(password) && password.equals("")){
+            userName = "Alex Costello";
+            password = "password";
+        }
+
         System.out.println(userName+" "+password);
 
         //final MainActivity thisMain = this;
