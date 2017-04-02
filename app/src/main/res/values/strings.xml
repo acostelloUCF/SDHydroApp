@@ -5,8 +5,10 @@
     <string name="action_logout">Logout</string>
     <string name="action_manageEquipmentIDs">Manage Equipment IDs</string>
     <string name="database_name">hydro</string>
-    <string name="dbURL">http://192.168.56.1:8081/website/app.php</string>
-    <string name="greenHex">#2d7a00</string>
+
+    <!--<string name="dbURL">http://192.168.56.1:8081/website/app.php</string>-->
+    <string name="dbURL">http://group18.net16.net/app.php</string>
+
 
 
     <string name="title_activity_user_home">Home</string>

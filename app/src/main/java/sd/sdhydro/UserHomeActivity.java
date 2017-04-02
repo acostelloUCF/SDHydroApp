@@ -81,12 +81,13 @@ public class UserHomeActivity extends AppCompatActivity{
                             for(int i=0;i<jArray.length();i++) {
                                 jArrayList.add(jArray.getJSONObject(i));
                             }
-
+                            makeLV();
 
 
                         }catch (JSONException e){
                                 e.printStackTrace();
                         }
+
 
                     }
                 },
@@ -133,11 +134,11 @@ public class UserHomeActivity extends AppCompatActivity{
 
 
 
-        //create listview, pass it the listlayout and list of JSON objects
-
-        listView = (ListView)findViewById(R.id.listview);
-        jArrayAdapter = new JSONObjectAdapter(UserHomeActivity.this, R.layout.list_item,jArrayList, this);
-        listView.setAdapter(jArrayAdapter);
+//        //create listview, pass it the listlayout and list of JSON objects
+//
+//        listView = (ListView)findViewById(R.id.listview);
+//        jArrayAdapter = new JSONObjectAdapter(UserHomeActivity.this, R.layout.list_item,jArrayList, this);
+//        listView.setAdapter(jArrayAdapter);
 
 
 
@@ -200,7 +201,13 @@ public class UserHomeActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
     }
+    public void makeLV(){
+        //create listview, pass it the listlayout and list of JSON objects
 
+        listView = (ListView)findViewById(R.id.listview);
+        jArrayAdapter = new JSONObjectAdapter(UserHomeActivity.this, R.layout.list_item,jArrayList, this);
+        listView.setAdapter(jArrayAdapter);
+    }
 
 
 }
