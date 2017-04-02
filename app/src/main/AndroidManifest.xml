@@ -35,11 +35,14 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ManageEquipmentIDsActivity"
-            android:label="Equipment ID Management"></activity>
+            android:label="Equipment ID Management" />
         <activity
             android:name=".EquipmentHistoryActivity"
-            android:label="Equipment History"
-            ></activity>
+            android:label="Equipment History" />
+        <activity
+            android:name=".EquipmentProfileActivity"
+            android:label="Equipment Profile"/>
+
     </application>
 
 </manifest>

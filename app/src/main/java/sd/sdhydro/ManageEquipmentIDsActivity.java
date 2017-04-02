@@ -36,7 +36,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
     private TextView nickNameText;
     private Button addEIDButton;
     private Button deleteButton;
-    private Button nickButton;
+    private Button profileButton;
     private String equipmentID;
     private String userName;
     private Spinner spinner;
@@ -49,9 +49,9 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         eID = (TextView) findViewById(R.id.addEquipmentIDEditText);
         addEIDButton = (Button) findViewById(R.id.addEquipmentIDButton);
         deleteButton = (Button) findViewById(R.id.deleteButton);
-        nickButton = (Button) findViewById(R.id.nickButton);
+        profileButton = (Button) findViewById(R.id.btn_profile);
         spinner = (Spinner) findViewById(R.id.spinner);
-        nickNameText = (TextView) findViewById(R.id.nickEditText);
+        //nickNameText = (TextView) findViewById(R.id.nickEditText);
         //add icon to toolbar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.let);
@@ -65,8 +65,20 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
 
         getJArrayList();
+        System.out.println(jArrayList.toString());
 //        System.out.println(jArrayList.size());
 
+        profileButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), EquipmentProfileActivity.class);
+                intent.putExtra("userName", userName);
+                intent.putExtra("equipmentID",equipmentID);
+                startActivity(intent);
+
+
+            }
+        });
 
 
         addEIDButton.setOnClickListener(new View.OnClickListener() {
@@ -119,34 +131,34 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         });
 
 
-        nickButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(nickNameText.getWindowToken(),
-                        InputMethodManager.RESULT_UNCHANGED_SHOWN);
-
-
-                System.out.println(nickNameText.getText().toString());
-                AlertDialog alertDialog = new AlertDialog.Builder(ManageEquipmentIDsActivity.this).create();
-                if(nickNameText.getText().toString().isEmpty()){
-
-                    alertDialog.setTitle("Oops...");
-                    alertDialog.setMessage("You must enter a nickname.");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                    alertDialog.show();
-                }
-                else{
-                    setNickname();
-                }
-            }
-        });
+//        nickButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//
+//                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//                imm.hideSoftInputFromWindow(nickNameText.getWindowToken(),
+//                        InputMethodManager.RESULT_UNCHANGED_SHOWN);
+//
+//
+//                System.out.println(nickNameText.getText().toString());
+//                AlertDialog alertDialog = new AlertDialog.Builder(ManageEquipmentIDsActivity.this).create();
+//                if(nickNameText.getText().toString().isEmpty()){
+//
+//                    alertDialog.setTitle("Oops...");
+//                    alertDialog.setMessage("You must enter a nickname.");
+//                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//                    alertDialog.show();
+//                }
+//                else{
+//                    setNickname();
+//                }
+//            }
+//        });
 
 
     }
@@ -183,17 +195,17 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
         //nickNameText.setText(spinner.getSelectedItem().toString());
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                nickNameText.setText(spinner.getSelectedItem().toString());
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+////            @Override
+////            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+////                nickNameText.setText(spinner.getSelectedItem().toString());
+////            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
 
 
@@ -242,6 +254,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
                 Map<String,String> params = new HashMap<String, String>();
                 // params.put("equipmentID", equipmentID);
                 params.put("opCode", "3");
+                params.put("userName",userName);
                 return params;
             }
 
@@ -423,7 +436,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<String, String>();
                 params.put("userName", userName);
-                params.put("EIDremove", EIDremove);
+                params.put("removeEID", EIDremove);
                 params.put("opCode", "7");
                 return params;
             }
