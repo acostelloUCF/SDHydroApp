@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context="sd.sdhydro.EquipmentProfileActivity">
 
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="102dp"
+        android:layout_marginTop="16dp"
+        android:text="Manual LED Light Switch"
+        app:layout_constraintRight_toLeftOf="@+id/toggleButton2"
+        app:layout_constraintTop_toTopOf="@+id/toggleButton2"
+        android:layout_marginEnd="102dp" />
+
+    <EditText
+        android:id="@+id/plantsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Update Plants"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickText"
+        app:layout_constraintVertical_bias="0.0" />
+
     <Button
         android:id="@+id/saveProfileButton"
         style="@style/Widget.AppCompat.Button.Colored"
@@ -24,47 +49,179 @@
         android:id="@+id/nickText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="-7dp"
         android:ems="10"
         android:hint="Update Nickname"
         android:inputType="text"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.034" />
 
     <EditText
-        android:id="@+id/plantsText"
+        android:id="@+id/datePlantedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="-8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:hint="Update Plants"
+        android:hint="Date Planted"
         android:inputType="text"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nickText"
+        app:layout_constraintTop_toBottomOf="@+id/plantsText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/tdsHighText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="TDS High"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePlantedText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/tdsLowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="TDS Low"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdsHighText"
+        app:layout_constraintVertical_bias="0.004" />
+
+    <EditText
+        android:id="@+id/phHighText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="pH High"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tdsLowText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/phLowText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="pH Low"
+        android:inputType="text"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phHighText"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
+        android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Nickname:"
         app:layout_constraintRight_toLeftOf="@+id/nickText"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/textView18" />
+        app:layout_constraintTop_toTopOf="@+id/nickText" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Plants:"
         app:layout_constraintRight_toLeftOf="@+id/plantsText"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toTopOf="@+id/plantsText" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Date Planted:"
+        app:layout_constraintRight_toLeftOf="@+id/datePlantedText"
+        app:layout_constraintTop_toTopOf="@+id/datePlantedText" />
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TDS High End:"
+        app:layout_constraintRight_toLeftOf="@+id/tdsHighText"
+        app:layout_constraintTop_toTopOf="@+id/tdsHighText" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TDS Low End:"
+        app:layout_constraintRight_toLeftOf="@+id/tdsLowText"
+        app:layout_constraintTop_toTopOf="@+id/tdsLowText" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="pH High End:"
+        app:layout_constraintRight_toLeftOf="@+id/phHighText"
+        app:layout_constraintTop_toTopOf="@+id/phHighText" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="pH Low End:"
+        app:layout_constraintRight_toLeftOf="@+id/phLowText"
+        app:layout_constraintTop_toTopOf="@+id/phLowText" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:theme="@style/Green.Button"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ToggleButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phLowText" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton2"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="ToggleButton"
+        android:theme="@style/Green.Button"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleButton" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="102dp"
+        android:layout_marginTop="16dp"
+        android:text="Flowering Mode:"
+        app:layout_constraintRight_toLeftOf="@+id/toggleButton"
+        app:layout_constraintTop_toTopOf="@+id/toggleButton"
+        android:layout_marginEnd="102dp" />
 
 </android.support.constraint.ConstraintLayout>
