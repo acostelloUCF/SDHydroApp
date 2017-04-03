@@ -24,7 +24,7 @@ public class EquipmentProfileActivity extends AppCompatActivity {
             equipmentID = (String) b.get("equipmentID");
         }
 
-        
+
 
 
 

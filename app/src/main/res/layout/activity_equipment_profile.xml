@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context="sd.sdhydro.EquipmentProfileActivity">
 
+    <Button
+        android:id="@+id/saveProfileButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Save Profile"
+        android:theme="@style/Green.Button"
+
+        android:layout_marginBottom="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <EditText
+        android:id="@+id/nickText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="-7dp"
+        android:ems="10"
+        android:hint="Update Nickname"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.034" />
+
+    <EditText
+        android:id="@+id/plantsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="-8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Update Plants"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nickText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="32dp"
+        android:text="Nickname:"
+        app:layout_constraintRight_toLeftOf="@+id/nickText"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="32dp"
+        android:text="Plants:"
+        app:layout_constraintRight_toLeftOf="@+id/plantsText"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
 </android.support.constraint.ConstraintLayout>
