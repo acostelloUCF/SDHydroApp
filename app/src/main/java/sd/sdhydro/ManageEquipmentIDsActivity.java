@@ -12,8 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,6 +42,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
     private String equipmentID;
     private String userName;
     private Spinner spinner;
+    private ProgressBar loadWheel;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.let);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+        loadWheel = (ProgressBar) findViewById(R.id.progressBar);
+        loadWheel.setVisibility(View.VISIBLE);
 
         SharedPreferences myprefs= this.getSharedPreferences("userName", MODE_PRIVATE);
         userName = myprefs.getString("userName",null);
@@ -194,6 +199,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        loadWheel.setVisibility(View.GONE);
         //nickNameText.setText(spinner.getSelectedItem().toString());
 //        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 ////            @Override
@@ -293,7 +299,8 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error
+                        Toast.makeText(ManageEquipmentIDsActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                        loadWheel.setVisibility(View.GONE);
                     }
                 }
 

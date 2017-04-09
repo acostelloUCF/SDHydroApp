@@ -2,13 +2,18 @@ package sd.sdhydro;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
@@ -27,6 +32,7 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
     private String eID;
     private String nick;
     private TextView eIDTitle;
+    private ProgressBar loadWheel;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
     ListView listView;
     JSONHistoryAdapter jArrayAdapter;
@@ -40,10 +46,10 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.mipmap.let);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
-
+        loadWheel = (ProgressBar) findViewById(R.id.progressBar);
+        loadWheel.setVisibility(View.VISIBLE);
 
         eIDTitle = (TextView) findViewById(R.id.eIDTitle);
-
         Bundle b = getIntent().getExtras();
         if(b!=null) {
             eID = b.getString("eID");
@@ -51,15 +57,22 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
         }
         else
             eID=null;
-
         if(!nick.equals("") && !nick.equals("null"))
             eIDTitle.setText(nick);
         else
             eIDTitle.setText(eID);
+
+
         //create request here
         String url = getString(R.string.dbURL);
         // Formulate the request and handle the response.
         final String finalEID = eID;
+        RetryPolicy retryPolicy = new DefaultRetryPolicy(
+                5000,
+                3,
+                1
+        );
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -73,6 +86,7 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
                             for(int i=0;i<jArray.length();i++) {
                                 jArrayList.add(jArray.getJSONObject(i));
                             }
+                            loadWheel.setVisibility(View.GONE);
 
 
 
@@ -88,7 +102,8 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error
+                        Toast.makeText(EquipmentHistoryActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                        loadWheel.setVisibility(View.GONE);
                     }
                 }
 
@@ -110,6 +125,7 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
                 return params;
             }
         };
+        stringRequest.setRetryPolicy(retryPolicy);
         //Use singleton here
         // Get a RequestQueue
         RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).

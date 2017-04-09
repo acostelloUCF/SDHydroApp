@@ -21,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class UserHomeActivity extends AppCompatActivity{
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
     ListView listView;
     JSONObjectAdapter jArrayAdapter;
-
+    private ProgressBar loadWheel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,8 @@ public class UserHomeActivity extends AppCompatActivity{
         SharedPreferences myprefs= this.getSharedPreferences("userName", MODE_PRIVATE);
         userName = myprefs.getString("userName",null);
         System.out.println(userName);
-
+        loadWheel = (ProgressBar) findViewById(R.id.progressBar);
+        loadWheel.setVisibility(View.VISIBLE);
 
 
 
@@ -94,7 +96,8 @@ public class UserHomeActivity extends AppCompatActivity{
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        // Handle error
+                        Toast.makeText(UserHomeActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                        loadWheel.setVisibility(View.GONE);
                     }
                 }
 
@@ -207,6 +210,7 @@ public class UserHomeActivity extends AppCompatActivity{
         listView = (ListView)findViewById(R.id.listview);
         jArrayAdapter = new JSONObjectAdapter(UserHomeActivity.this, R.layout.list_item,jArrayList, this);
         listView.setAdapter(jArrayAdapter);
+        loadWheel.setVisibility(View.GONE);
     }
 
 

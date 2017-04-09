@@ -11,12 +11,16 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView passwordTextField;
     private Button loginButton;
     private Button newUserButton;
+    private ProgressBar loadWheel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         passwordTextField = (TextView) findViewById(R.id.passwordTextField);
         loginButton = (Button) findViewById(R.id.loginButton);
         newUserButton = (Button) findViewById(R.id.newUserButton);
+        loadWheel = (ProgressBar) findViewById(R.id.progressBar);
+        loadWheel.setVisibility(View.GONE);
 
         //set click listeners and onClick methods
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -72,9 +79,9 @@ public class MainActivity extends AppCompatActivity {
     public void onLoginClick(){
         userName = userNameTextField.getText().toString();
         password = passwordTextField.getText().toString();
-
+        loadWheel.setVisibility(View.VISIBLE);
         if(userName.equals(password) && password.equals("")){
-            userName = "Alex Costello";
+            userName = "Alex";
             password = "password";
         }
 
@@ -82,7 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
         //final MainActivity thisMain = this;
 
-
+        RetryPolicy retryPolicy = new DefaultRetryPolicy(
+                5000,
+                1,
+                1
+        );
             //create request here
             String url = getString(R.string.dbURL);
             // Formulate the request and handle the response.
@@ -97,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            // Handle error
+                            Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                            loadWheel.setVisibility(View.GONE);
                         }
                     }
 
@@ -120,6 +132,8 @@ public class MainActivity extends AppCompatActivity {
                     return params;
                 }
             };
+
+            stringRequest.setRetryPolicy(retryPolicy);
             //Use singleton here
             // Get a RequestQueue
             RequestQueue queue = MySingleton.getInstance(this.getApplicationContext()).
