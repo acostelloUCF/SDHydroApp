@@ -78,7 +78,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
                 Intent intent = new Intent(getApplicationContext(), EquipmentProfileActivity.class);
                 intent.putExtra("userName", userName);
-                intent.putExtra("equipmentID",equipmentID);
+                intent.putExtra("equipmentID",spinner.getSelectedItem().toString());
                 startActivity(intent);
 
 

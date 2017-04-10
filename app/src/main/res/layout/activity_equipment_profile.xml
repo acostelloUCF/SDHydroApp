@@ -21,8 +21,16 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/textView18"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -47,6 +55,8 @@
                 android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:layout_marginTop="16dp"
                 android:text="Plants:"
                 app:layout_constraintRight_toLeftOf="@+id/plantsText"
@@ -71,6 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:text="Date Planted:"
                 app:layout_constraintRight_toLeftOf="@+id/datePlantedText"
                 app:layout_constraintTop_toTopOf="@+id/datePlantedText" />
@@ -88,6 +100,34 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plantsText"
                 app:layout_constraintVertical_bias="0.0" />
+            <LinearLayout
+            android:id="@+id/remTds"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:background="#2d7a00"
+            android:textColor="#FFFFFF">
+            <TextView
+                android:id="@+id/remTdsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight=".8"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
+                android:text="Remaining TDS Solution:" />
+
+                <CheckBox
+                    android:id="@+id/tdsCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2d7a00"
+                    android:buttonTint="#FFFFFF"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight=".2"
+                    android:text="Reset" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView20"
@@ -95,6 +135,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="TDS High End:"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 app:layout_constraintRight_toLeftOf="@+id/tdsHighText"
                 app:layout_constraintTop_toTopOf="@+id/tdsHighText" />
 
@@ -116,6 +158,8 @@
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:layout_marginTop="16dp"
                 android:text="TDS Low End:"
                 app:layout_constraintRight_toLeftOf="@+id/tdsLowText"
@@ -134,12 +178,42 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tdsHighText"
                 app:layout_constraintVertical_bias="0.004" />
+            <LinearLayout
+                android:id="@+id/remPh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/remPhText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2d7a00"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight=".8"
+                    android:text="Remaining pH Solution:" />
+
+                <CheckBox
+                    android:id="@+id/phCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2d7a00"
+                    android:buttonTint="#FFFFFF"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight=".2"
+                    android:text="Reset" />
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:text="pH High End:"
                 app:layout_constraintRight_toLeftOf="@+id/phHighText"
                 app:layout_constraintTop_toTopOf="@+id/phHighText" />
@@ -162,6 +236,8 @@
                 android:id="@+id/textView23"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:text="pH Low End:"
                 app:layout_constraintRight_toLeftOf="@+id/phLowText"
                 tools:layout_editor_absoluteY="321dp" />
@@ -179,6 +255,34 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phHighText"
                 app:layout_constraintVertical_bias="0.0" />
+            <LinearLayout
+                android:id="@+id/remFlower"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
+                android:weightSum="1">
+                <TextView
+                    android:id="@+id/remFlowerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2d7a00"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight=".8"
+                    android:text="Remaining Flowering Solution:" />
+
+                <CheckBox
+                    android:id="@+id/flowerCheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#2d7a00"
+                    android:buttonTint="#FFFFFF"
+                    android:textColor="#FFFFFF"
+                    android:layout_weight=".2"
+                    android:text="Reset" />
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/LED"
@@ -193,11 +297,11 @@
                     android:layout_marginTop="0dp"
                     android:layout_weight="0.25"
                     android:text="LED Timing:"
-                    app:layout_constraintRight_toLeftOf="@+id/lightingToggleButton"
-                    app:layout_constraintTop_toTopOf="@+id/lightingToggleButton" />
+                    app:layout_constraintRight_toLeftOf="@+id/ledToggleButton"
+                    app:layout_constraintTop_toTopOf="@+id/ledToggleButton" />
 
                 <ToggleButton
-                    android:id="@+id/lightingToggleButton"
+                    android:id="@+id/ledToggleButton"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -238,6 +342,8 @@
                 android:id="@+id/textView16"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:text="LED Start Time:" />
 
             <LinearLayout
@@ -271,6 +377,8 @@
                 android:id="@+id/textView26"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="#2d7a00"
+                android:textColor="#FFFFFF"
                 android:text="LED End Time:" />
 
             <LinearLayout
