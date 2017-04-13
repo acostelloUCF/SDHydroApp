@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SDHydroApp.iml" filepath="$PROJECT_DIR$/SDHydroApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/SDHydroAppOK.iml" filepath="$PROJECT_DIR$/SDHydroAppOK.iml" />
-      <module fileurl="file://$PROJECT_DIR$/SDHydroAppW.iml" filepath="$PROJECT_DIR$/SDHydroAppW.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

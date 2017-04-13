@@ -18,6 +18,10 @@ import com.android.volley.Response;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -73,15 +77,46 @@ public class JSONHistoryAdapter extends ArrayAdapter<JSONObject>{
             phText.setText("pH: "+jObj.get("PH").toString());
             tdsText.setText("TDS: "+jObj.get("TDS").toString());
             luxText.setText("Lux: "+jObj.get("LUX").toString());
-            timeText.setText(jObj.get("timestamp").toString());
+            timeText.setText(convertToAmPm(jObj.get("timestamp").toString()));
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            try {
+                timeText.setText(jObj.get("timestamp").toString());
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
         }
 
         return jView;
     }
 
 
+    public String convertToAmPm(String timestamp) throws ParseException {
+        //timestamp format:
+        //2017-04-01 22:47:40
+        String[] date = timestamp.split(" ");
+        String[] day = date[0].split("-");
+        String[] time=date[1].split(":");
+        String amPm = "A.M.";
+        if((Integer.valueOf(time[0]) > 11))
+            amPm = "P.M.";
+        if((Integer.valueOf(time[0]) == 0))
+            time[0] = "12";
+        if(Integer.valueOf(time[0]) > 12){
+            time[0] = String.valueOf((Integer.valueOf(time[0]) - 12));
+        }
+
+
+
+        String response = time[0] + ":"+time[1] + ":"+time[2] +" "+amPm +" "+day[1]+"/"+day[2]+"/"+day[0].substring(2);
+        System.out.println(response);
+        return response;
+
+
+
+    }
 
 }
 

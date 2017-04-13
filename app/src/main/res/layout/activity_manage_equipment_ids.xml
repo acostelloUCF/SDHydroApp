@@ -73,7 +73,7 @@
         android:layout_height="wrap_content"
         android:text="Edit Profile Settings"
         android:theme="@style/Green.Button"
-        android:layout_below="@+id/progressBar"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
