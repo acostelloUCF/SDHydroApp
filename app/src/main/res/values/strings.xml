@@ -7,8 +7,8 @@
     <string name="database_name">hydro</string>
 
     <!--<string name="dbURL">http://192.168.56.1:8081/website/app.php</string>-->
-    <string name="dbURL">http://group18.net16.net/app.php</string>
-    <!--<string name="dbURL">https://homehydroponics.online/app.php</string>-->
+    <!--<string name="dbURL">http://group18.net16.net/app.php</string>-->
+    <string name="dbURL">https://homehydroponics.online/app.php</string>
 
     <string name="title_activity_user_home">Home</string>
 

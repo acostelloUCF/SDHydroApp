@@ -173,13 +173,13 @@ public class UserHomeActivity extends AppCompatActivity{
             return true;
         }
 
-        if (id == R.id.action_settings) {
-            System.out.println("clicked settings");
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-
-            return true;
-        }
+//        if (id == R.id.action_settings) {
+//            System.out.println("clicked settings");
+//            Intent intent = new Intent(this, SettingsActivity.class);
+//            startActivity(intent);
+//
+//            return true;
+//        }
 
         if (id == R.id.action_about) {
             System.out.println("clicked about");

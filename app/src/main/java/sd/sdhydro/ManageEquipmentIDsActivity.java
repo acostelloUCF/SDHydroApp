@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,6 +45,13 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
     private Spinner spinner;
     private ProgressBar loadWheel;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        getJArrayList();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +73,10 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         SharedPreferences myprefs= this.getSharedPreferences("userName", MODE_PRIVATE);
         userName = myprefs.getString("userName",null);
         System.out.println(userName);
+        //hide keyboard on screen create
+        getWindow().setSoftInputMode(
+                WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+
 
         //do another userHome query to get jArrayList
 
@@ -78,7 +90,11 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
                 Intent intent = new Intent(getApplicationContext(), EquipmentProfileActivity.class);
                 intent.putExtra("userName", userName);
-                intent.putExtra("equipmentID",spinner.getSelectedItem().toString());
+                try {
+                    intent.putExtra("equipmentID", jArrayList.get(spinner.getSelectedItemPosition()).get("equipmentID").toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 startActivity(intent);
 
 

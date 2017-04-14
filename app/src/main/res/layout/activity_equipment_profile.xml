@@ -7,8 +7,8 @@
     tools:context="sd.sdhydro.EquipmentProfileActivity">
 
     <ScrollView
-        android:layout_width="395dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         app:layout_constraintRight_toRightOf="parent"
@@ -308,6 +308,7 @@
                     android:layout_marginTop="0dp"
                     android:layout_weight="0.25"
                     android:text="ToggleButton"
+                    android:textColor="#FFFFFF"
                     android:theme="@style/Green.Button"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/floweringToggleButton" />
@@ -334,6 +335,7 @@
                     android:layout_weight=".25"
                     android:text="ToggleButton"
                     android:theme="@style/Green.Button"
+                    android:textColor="#FFFFFF"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/phLowText" />
             </LinearLayout>

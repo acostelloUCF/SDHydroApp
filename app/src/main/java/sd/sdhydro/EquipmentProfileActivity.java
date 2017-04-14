@@ -200,6 +200,8 @@ public class EquipmentProfileActivity extends AppCompatActivity {
                 //System.out.println(toMilitary(postData.get("lightOnTime")));
 
                 updateProfile(postData);
+
+                goToManageIDs();
             }
         });
 
@@ -218,7 +220,7 @@ public class EquipmentProfileActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         //System.out.println(response);
                         if(response.startsWith("Success")){
-                            Toast.makeText(EquipmentProfileActivity.this, "Profile successfully saved.", Toast.LENGTH_SHORT).show();
+                            goToManageIDs();
 
                         }
                     }
@@ -266,6 +268,13 @@ public class EquipmentProfileActivity extends AppCompatActivity {
         // Add a request (in this example, called stringRequest) to your RequestQueue.
         MySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
+
+    }
+
+    private void goToManageIDs() {
+//        Intent intent = new Intent(this, ManageEquipmentIDsActivity.class);
+//        startActivity(intent);
+//
 
     }
 
