@@ -201,7 +201,10 @@ public class EquipmentProfileActivity extends AppCompatActivity {
 
                 updateProfile(postData);
 
-                goToManageIDs();
+                //goToManageIDs();
+
+                Intent i = new Intent(getApplicationContext(), ManageEquipmentIDsActivity.class);
+                startActivity(i);
             }
         });
 

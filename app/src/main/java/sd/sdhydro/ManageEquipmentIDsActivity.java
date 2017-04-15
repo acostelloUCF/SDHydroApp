@@ -46,11 +46,7 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
     private ProgressBar loadWheel;
     private ArrayList<JSONObject> jArrayList = new ArrayList<JSONObject>();
 
-    @Override
-    protected void onResume(){
-        super.onResume();
-        getJArrayList();
-    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,8 +73,6 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
         getWindow().setSoftInputMode(
                 WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-
-        //do another userHome query to get jArrayList
 
 
         getJArrayList();
@@ -184,10 +178,19 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
 
     }
 
+//    @Override
+//    protected void onResume(){
+//        super.onResume();
+//        getJArrayList();
+//    }
+
     private void initSpinner() {
 
 
+
         String[] array = new String[jArrayList.size()];
+
+
         int i=0;
 
         for(JSONObject j : jArrayList){
@@ -205,8 +208,10 @@ public class ManageEquipmentIDsActivity extends AppCompatActivity{
             i++;
         }
 
+        spinner.setAdapter(new ArrayAdapter<String>(ManageEquipmentIDsActivity.this,android.R.layout.simple_dropdown_item_1line,new String[0]));
 
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        //spinner = (Spinner) findViewById(R.id.spinner);
+
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, R.layout.spinner_item, array);
