@@ -69,14 +69,14 @@ public class JSONHistoryAdapter extends ArrayAdapter<JSONObject>{
         TextView tdsText =(TextView)jView.findViewById(R.id.list_tds);
         TextView luxText =(TextView)jView.findViewById(R.id.list_lux);
         TextView timeText =(TextView)jView.findViewById(R.id.list_timestamp);
-
-
+        TextView waterLevelText = (TextView) jView.findViewById(R.id.list_waterlevel);
 
         //Assign the appropriate data from our alert object above
         try {
             phText.setText("pH: "+jObj.get("PH").toString());
             tdsText.setText("TDS: "+jObj.get("TDS").toString());
             luxText.setText("Lux: "+jObj.get("LUX").toString());
+            waterLevelText.setText("Water Level: "+jObj.get("WaterLevel").toString()+"%");
             timeText.setText(convertToAmPm(jObj.get("timestamp").toString()));
         } catch (JSONException e) {
             e.printStackTrace();

@@ -1,5 +1,6 @@
 package sd.sdhydro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -138,6 +139,13 @@ public class EquipmentHistoryActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent i = new Intent(getApplicationContext(), UserHomeActivity.class);
+        startActivity(i);
+
+    }
 
 
 

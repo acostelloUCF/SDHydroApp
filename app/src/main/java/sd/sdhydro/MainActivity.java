@@ -24,6 +24,7 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         password = passwordTextField.getText().toString();
         loadWheel.setVisibility(View.VISIBLE);
         if(userName.equals(password) && password.equals("")){
-            userName = "Alex";
+            userName = "Josh";
             password = "password";
         }
 
@@ -219,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed() {
